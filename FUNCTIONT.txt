@@ -1,16 +1,21 @@
 1- isinteractive 
-test weath the passed arg is interactive or not
+tests weath the passed arg is interactive or not
+
+
+
+
 2- _getline
 reads a line from the user  and end reading wiht a \n
 3- _strtok
 tokine a pointer to char with a sepetator
 4- isEFO
 discover weathe read reached end of file or not
-5- _strncmp
-copares tow string and discover weather they are idintical or not
-6- strlin
-counts the string chars
-7- strcopy
+5- _strncmp[done]
+
+6- strlen [done]
+
+
+7- strcpy
 copy sours sting to another one
 9- isbuilt
 checs weath the command is in the shell or not
