@@ -3,7 +3,7 @@
 /**
  * _strlen - counts the lenth of passed string
  * source: the string to count it's lenth
- * Return: (-1) if 
+ * Return: (-1) if
 */
 int _strlen(const char *source)
 {
@@ -49,4 +49,26 @@ int _varcmp(const char *var, const char *env)
 			return (1);
 	}
 	return (0);
+}
+
+/**
+ * _stringcpy - Copies the string pointed to src
+ * @destination: Pointer to the destination
+ * @source: Pointer to the source
+ *
+ * Return: Pointer
+ */
+char *_stringcpy(char *destination, char *source)
+{
+	int x = 0;
+
+	if (destination == source || source == 0)
+		return (destination);
+	while (source[x])
+	{
+		destination[x] = source[x];
+		x++;
+	}
+	destination[x] = NULL;
+	return (destination);
 }
