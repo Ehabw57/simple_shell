@@ -69,6 +69,6 @@ char *_stringcpy(char *destination, char *source)
 		destination[x] = source[x];
 		x++;
 	}
-	destination[x] = 0;
+	destination[x] = NULL;
 	return (destination);
 }
