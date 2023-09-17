@@ -3,7 +3,7 @@
 /**
  * _strlen - counts the lenth of passed string
  * source: the string to count it's lenth
- * Return: (-1) if 
+ * Return: (-1) if
 */
 int _strlen(const char *source)
 {
