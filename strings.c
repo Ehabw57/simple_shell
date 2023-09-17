@@ -54,7 +54,7 @@ int _varcmp(const char *var, const char *env)
 /**
  * _stringcpy - Copies the string pointed to src
  * @destination: Pointer to the destination
- * @source: Pointer to the src
+ * @source: Pointer to the source
  *
  * Return: Pointer
  */
