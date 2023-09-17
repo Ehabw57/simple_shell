@@ -50,3 +50,25 @@ int _varcmp(const char *var, const char *env)
 	}
 	return (0);
 }
+
+/**
+ * _stringcpy - Copies the string pointed to src
+ * @destination: Pointer to the destination
+ * @source: Pointer to the src
+ *
+ * Return: Pointer
+ */
+char *_stringcpy(char *destination, char *source)
+{
+	int x = 0;
+
+	if (destination == source || source == 0)
+		return (destination);
+	while (source[x])
+	{
+		destination[x] = source[x];
+		x++;
+	}
+	destination[x] = 0;
+	return (destination);
+}
