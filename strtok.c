@@ -1,32 +1,12 @@
 #include "main.h"
-#include <stdlib.h>
-char *_strtok(char *source,char *deil)
+/**
+ * _strtok - toknize a given string based on the deil
+ * @source: the string to be toknized
+ * @deil: the delimeters
+ * Return: the first token of the string or the next token
+ * if source is NULL
+*/
+char *_strtok(char *source, char *deil)
 {
-static char *token;
-int i =0,int j=0;
-
-if(source == NULL)
-{
-	while(*token != '\0')
-		token++;
-	return(token++);
+	return (strtok(source, deil));
 }
-
-while(source[i] != '\0')
-{
-	j = 0;
-	while(deil[j] != '\0')
-	{
-		if(deil[j] == source[i])
-		{
-			source[i] = '\0';
-break:
-		}
-		j++;
-	}
-	i++;
-}
-token = source;
-return(token);
-}
-
