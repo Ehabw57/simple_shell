@@ -14,7 +14,6 @@ char *_ispath(char **dir, char *cmd)
 	while (dir[x])
 	{
 		full = _strcat(dir[x], cmd);
-		printf("%s\n", full);
 		if (access(full, F_OK | X_OK) == 0)
 			return (full);
 		free(full);
