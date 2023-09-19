@@ -93,20 +93,24 @@ char *_strcat(char *dest, char *src)
 {
 	int i;
 	int c;
+	char *result;
 
 	if (dest == NULL)
 		return (NULL);
 	if (src == NULL)
-		return (NULL);
-
+		return (dest);
+	result = malloc(_strlen(dest) + _strlen(src) + 1);
+	_strcpy(result, dest);
 	for (i = 0; dest[i] != '\0'; i++)
 	{
 	}
+	result[i] == '/';
+	i++;
 	for (c = 0; src[c] != '\0'; c++)
 	{
-		dest[i] = src[c];
+		result[i] = src[c];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	result[i] = '\0';
+	return (result);
 }

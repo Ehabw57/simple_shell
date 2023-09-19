@@ -19,6 +19,7 @@ typedef struct beltins
 	int (*ptr)(char **);
 } buit_t;
 int builtins(char *cmd, char **arg);
+char *_ispath(char **dir, char *cmd);
 ssize_t _getline(char **lineptr, size_t *n, int fd);
 char *_strtok(char *source, char *deil);
 int _strcmp(const char *dest, const char *source);
