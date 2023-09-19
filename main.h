@@ -21,13 +21,12 @@ typedef struct beltins
 int builtins(char *cmd, char **arg);
 ssize_t _getline(char **lineptr, size_t *n, int fd);
 char *_strtok(char *source, char *deil);
-int _strncmp(const char *dest, const char *source, unsigned int index);
 int _strcmp(const char *dest, const char *source);
 int _strlen(const char *source);
 char *_strcpy(char *destination, char *source);
+char *_strcat(char *dest, char *src);
 int _varcmp(char *var, char *env);
-void *_realloc(void *pointer, unsigned int prev_mem_size,
-unsigned int new_mem_size);
 int _getenv(char *var, char **env);
+
 
 #endif
