@@ -18,35 +18,6 @@ int _strlen(const char *source)
 }
 
 /**
- * _strncmp - copares tow strings with n indexes then return the result
- * @dest: the first string
- * @source: the sex string
- * @index: n indexes to compare
- * Return: -1 if one of the strings is NULL
- * , -2 if indexes to compar is bigger than the lenth of one of the strings
- * , 1 if strnings is idntical
- * , 0 if strings is not idntical
- */
-int _strncmp(const char *dest, const char *source, unsigned int index)
-{
-	int i = 0;
-
-	if (dest == NULL || source == NULL)
-		return (-1);
-
-	if (index > _strlen(dest) || index > _strlen(source))
-		return (-2);
-
-	while (dest[i] == source[i])
-	{
-		if (i == index)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-/**
  * _varcmp - compares one string with a singel env var
  * @var: name of the env var
  * @env: pointer to env var
@@ -110,4 +81,32 @@ int _strcmp(const char *dest, const char *source)
 		i++;
 	}
 	return (0);
+}
+
+/**
+ * _strcat - a function that copyes tow strings
+ * @dest: the one to copy text for
+ * @src: the one to copy text from
+ * Return: always dest
+ **/
+char *_strcat(char *dest, char *src)
+{
+	int i;
+	int c;
+
+	if (dest == NULL)
+		return (NULL);
+	if (src == NULL)
+		return (NULL);
+
+	for (i = 0; dest[i] != '\0'; i++)
+	{
+	}
+	for (c = 0; src[c] != '\0'; c++)
+	{
+		dest[i] = src[c];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
