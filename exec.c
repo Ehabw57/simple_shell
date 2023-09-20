@@ -2,14 +2,7 @@
 int _exec(char *cmd, char *arg[])
 {
 
-    int id, i = 0;
-
-    printf("%s", cmd);
-    while (arg[i] != NULL)
-    {
-        printf("%s", arg[i]);
-        i++;
-    }
+    int id,;
     id = fork();
     if (id == 0)
     {
