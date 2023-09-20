@@ -35,3 +35,27 @@ int builtins(char *cmd, char **arg)
 	}
 	return (1);
 }
+
+
+/**
+ * print_env - prints the evironment var
+ * @pointer: data.
+ * Return: 1 on success.
+ */
+int print_env(buit_t *pointer)
+{
+	int x, y;
+
+	for (x = 0; pointer->env[x]; x++)
+	{
+
+		for (y = 0; pointer->env[x][y]; y++)
+			;
+
+		write(STDOUT_FILENO, pointer->env[x], y);
+		write(STDOUT_FILENO, "\n", 1);
+	}
+	pointer->s = 0;
+
+	return (1);
+}

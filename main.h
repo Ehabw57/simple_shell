@@ -12,11 +12,15 @@
  * struct beltins - a struct to store the name and code for all bultin funxton
  * @name: Name of the function
  * @ptr: Pointer to that functoin
+ * @env: environment variable
+ * @s: status of the shell
 */
 typedef struct beltins
 {
 	char *name;
 	int (*ptr)(char **);
+	int s;
+	char **env;
 } buit_t;
 int builtins(char *cmd, char **arg);
 char *_ispath(char **dir, char *cmd);
@@ -28,7 +32,7 @@ char *_strcpy(char *destination, char *source);
 char *_strcat(char *dest, char *src);
 int _varcmp(char *var, char *env);
 int _getenv(char *var, char **env);
-
+int print_env(buit_t *pointer);
 
 
 #endif
