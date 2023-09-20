@@ -18,6 +18,7 @@ typedef struct beltins
 	char *name;
 	int (*ptr)(char **);
 } buit_t;
+int _exec(char *cmd, char *arg[]);
 int builtins(char *cmd, char **arg);
 char *_ispath(char **dir, char *cmd);
 ssize_t _getline(char **lineptr, size_t *n, int fd);
