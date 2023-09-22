@@ -1,85 +1,144 @@
 #include "shell.h"
 
 /**
- *_eputs - prints an input string
- * @str: the string to be printed
+ * strcat_cd - function that concatenates the message for cd error
  *
- * Return: Nothing
+ * @datash: data relevant (directory)
+ * @msg: message to print
+ * @error: output message
+ * @ver_str: counter lines
+ * Return: error message
  */
-void _eputs(char *str)
+char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
 {
-	int i = 0;
+	char *illegal_flag;
 
-	if (!str)
-		return;
-	while (str[i] != '\0')
+	_strcpy(error, datash->av[0]);
+	_strcat(error, ": ");
+	_strcat(error, ver_str);
+	_strcat(error, ": ");
+	_strcat(error, datash->args[0]);
+	_strcat(error, msg);
+	if (datash->args[1][0] == '-')
 	{
-		_eputchar(str[i]);
-		i++;
+		illegal_flag = malloc(3);
+		illegal_flag[0] = '-';
+		illegal_flag[1] = datash->args[1][1];
+		illegal_flag[2] = '\0';
+		_strcat(error, illegal_flag);
+		free(illegal_flag);
 	}
+	else
+	{
+		_strcat(error, datash->args[1]);
+	}
+
+	_strcat(error, "\n");
+	_strcat(error, "\0");
+	return (error);
 }
 
 /**
- * _eputchar - writes the character c to stderr
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * error_get_cd - error message for cd command in get_cd
+ * @datash: data relevant (directory)
+ * Return: Error message
  */
-int _eputchar(char c)
+char *error_get_cd(data_shell *datash)
 {
-	static int i;
-	static char buf[WRITE_BUF_SIZE];
+	int length, len_id;
+	char *error, *ver_str, *msg;
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	ver_str = aux_itoa(datash->counter);
+	if (datash->args[1][0] == '-')
 	{
-		write(2, buf, i);
-		i = 0;
+		msg = ": Illegal option ";
+		len_id = 2;
 	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
-	return (1);
+	else
+	{
+		msg = ": can't cd to ";
+		len_id = _strlen(datash->args[1]);
+	}
+
+	length = _strlen(datash->av[0]) + _strlen(datash->args[0]);
+	length += _strlen(ver_str) + _strlen(msg) + len_id + 5;
+	error = malloc(sizeof(char) * (length + 1));
+
+	if (error == 0)
+	{
+		free(ver_str);
+		return (NULL);
+	}
+
+	error = strcat_cd(datash, msg, error, ver_str);
+
+	free(ver_str);
+
+	return (error);
 }
 
 /**
- * _putfd - writes the character c to given fd
- * @c: The character to print
- * @fd: The filedescriptor to write to
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * error_not_found - generic error message for command not found
+ * @datash: data relevant (counter, arguments)
+ * Return: Error message
  */
-int _putfd(char c, int fd)
+char *error_not_found(data_shell *datash)
 {
-	static int i;
-	static char buf[WRITE_BUF_SIZE];
+	int length;
+	char *error;
+	char *ver_str;
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	ver_str = aux_itoa(datash->counter);
+	length = _strlen(datash->av[0]) + _strlen(ver_str);
+	length += _strlen(datash->args[0]) + 16;
+	error = malloc(sizeof(char) * (length + 1));
+	if (error == 0)
 	{
-		write(fd, buf, i);
-		i = 0;
+		free(error);
+		free(ver_str);
+		return (NULL);
 	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
-	return (1);
+	_strcpy(error, datash->av[0]);
+	_strcat(error, ": ");
+	_strcat(error, ver_str);
+	_strcat(error, ": ");
+	_strcat(error, datash->args[0]);
+	_strcat(error, ": not found\n");
+	_strcat(error, "\0");
+	free(ver_str);
+	return (error);
 }
 
 /**
- *_putsfd - prints an input string
- * @str: the string to be printed
- * @fd: the filedescriptor to write to
+ * error_exit_shell - generic error message for exit in get_exit
+ * @datash: data relevant (counter, arguments)
  *
- * Return: the number of chars put
+ * Return: Error message
  */
-int _putsfd(char *str, int fd)
+char *error_exit_shell(data_shell *datash)
 {
-	int i = 0;
+	int length;
+	char *error;
+	char *ver_str;
 
-	if (!str)
-		return (0);
-	while (*str)
+	ver_str = aux_itoa(datash->counter);
+	length = _strlen(datash->av[0]) + _strlen(ver_str);
+	length += _strlen(datash->args[0]) + _strlen(datash->args[1]) + 23;
+	error = malloc(sizeof(char) * (length + 1));
+	if (error == 0)
 	{
-		i += _putfd(*str++, fd);
+		free(ver_str);
+		return (NULL);
 	}
-	return (i);
+	_strcpy(error, datash->av[0]);
+	_strcat(error, ": ");
+	_strcat(error, ver_str);
+	_strcat(error, ": ");
+	_strcat(error, datash->args[0]);
+	_strcat(error, ": Illegal number: ");
+	_strcat(error, datash->args[1]);
+	_strcat(error, "\n\0");
+	free(ver_str);
+
+	return (error);
 }
