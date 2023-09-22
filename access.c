@@ -8,5 +8,5 @@ int accessable(char *cmd, char *arg[])
         _exec(cmd, arg);
         return (0);
     }
-    return (-1);
+    return (1);
 }

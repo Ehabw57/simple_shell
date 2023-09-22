@@ -9,4 +9,5 @@ void _peror(char *mesg, char *shell, char *cmd, int code)
     write(2, ": ", 2);
     write(2, cmd, _strlen(cmd));
     write(2, mesg, _strlen(mesg));
+    status = 127;
 }

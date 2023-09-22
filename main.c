@@ -7,9 +7,10 @@ int main(int ac, char *av[])
 	char **token = NULL;
 	int i = 0, len, stat, counter = 0;
 	size_t size = 1024;
-
-	while (1)
+	do
 	{
+		if (isatty(STDIN_FILENO) != 0)
+			write(1, "$ ", 2);
 		ac = counter++;
 		len = getline(&line, &size, stdin);
 		if (len == -1)
@@ -52,7 +53,8 @@ int main(int ac, char *av[])
 		}
 		_peror(": not found\n", av[0], token[0], counter);
 		free(token);
-	}
+	} while (isatty(STDIN_FILENO));
+	free(line);
 
 	return (ac = status);
 }
