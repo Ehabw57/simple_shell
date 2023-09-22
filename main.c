@@ -10,7 +10,7 @@ int main(int ac, char *av[])
 	do
 	{
 		if (isatty(STDIN_FILENO) != 0)
-			write(1, "$ ", 2);
+			write(STDOUT_FILENO, "@zerobors$ ", 11);
 		ac = counter++;
 		len = getline(&line, &size, stdin);
 		if (len == -1)
@@ -59,7 +59,7 @@ int main(int ac, char *av[])
 		}
 		_peror(": not found\n", av[0], token[0], counter);
 		free(token);
-	} while (isatty(STDIN_FILENO));
+	} while (isatty(STDIN_FILENO) || len != EOF);
 	free(line);
 
 	return (ac = status);
