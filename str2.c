@@ -23,7 +23,8 @@ int _string_length(char *c)
  * @string1: string1
  * @string2: string2
  *
- * Return: - when string1 < string2, + when string1 > string2, 0 when if string1 == string2
+ * Return: - when string1 < string2, + when string1 >
+ * string2, 0 when if string1 == string2
  */
 int  _string_comparison(char *string1, char *string2)
 {
@@ -44,7 +45,7 @@ int  _string_comparison(char *string1, char *string2)
 /**
  * is_string_starts_with - checks if strings starts at the same time
  * @a: string to search
- * @needle: thr substring to find
+ * @b: thr substring to find
  *
  * Return: address
  */

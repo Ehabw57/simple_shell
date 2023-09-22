@@ -66,7 +66,7 @@ char *find_path(info_t *i, char *p, char *c)
 	{
 		if (!p[x] || p[x] == ':')
 		{
-			path = duplicates_characters(p, curr,x );
+			path = duplicates_characters(p, curr, x);
 			if (!*path)
 				_string_concatenates(path, c);
 			else

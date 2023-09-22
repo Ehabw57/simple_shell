@@ -2,7 +2,7 @@
 
 /**
  **_store - function that store in memory
- *@po: the pointer to the memory 
+ *@po: the pointer to the memory
  *@y: byte that store in memory
  *@n: num of bytes
  *Return: pointer
@@ -39,7 +39,8 @@ void deletee(char **p)
  *
  * Return: pointer .
  */
-void *_Realloc(void *pointer, unsigned int prev_mem_size, unsigned int new_mem_size)
+void *_Realloc(void *pointer, unsigned int prev_mem_size,
+		unsigned int new_mem_size)
 {
 	char *c;
 

@@ -7,7 +7,7 @@
  *
  * Return: pointer to destination
  */
-char * _string_cpoy(char *d, char *s)
+char *_string_copy(char *d, char *s)
 {
 	int x = 0;
 
@@ -67,8 +67,7 @@ void _print_string(char *string)
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
- *
- * Return: On success 1 ,  On error, -1 
+ * Return: On success 1 ,  On error, -1
  */
 int _putchar(char c)
 
