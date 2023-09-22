@@ -5,9 +5,9 @@ int _hsexit(char **arg)
     if (arg[1] == NULL || arg[0] != NULL)
     {
         free(arg);
-        exit(status);
+     return (69);
     }
-    return (0);
+return(0);
 }
 int env(char **env)
 {
@@ -33,8 +33,7 @@ int builtins(char *cmd, char **arg)
     {
         if (_strcmp(arr[i].name, cmd) == 1)
         {
-            arr[i].ptr(arg);
-            return(0);
+            return(arr[i].ptr(arg));
         }
         i++;
     }

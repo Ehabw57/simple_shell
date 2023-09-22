@@ -3,10 +3,10 @@ int status = 0;
 int main(int ac, char *av[])
 {
 
-	char *line;
+	char *line = NULL;
 	char **token = NULL;
 	int i = 0, len, stat, counter = 0;
-	size_t size = 1024;
+	size_t size = 0;
 	do
 	{
 		if (isatty(STDIN_FILENO) != 0)
@@ -39,6 +39,12 @@ int main(int ac, char *av[])
 			free(token);
 			continue;
 		}
+		else if (stat == 69)
+		{
+			free(line);
+			exit(status);
+		}
+
 		stat = path_finder(token[0], token);
 		if (stat == 0 || stat < 0)
 		{
