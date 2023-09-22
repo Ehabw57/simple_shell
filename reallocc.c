@@ -17,10 +17,10 @@ char *_store(char po, char y, unsigned int n)
 }
 
 /**
- * delete - function frees a dynamically allocated array of strings.
+ * deletee - function frees a dynamically allocated array of strings.
  * @p:  Pointer to the array of strings.
  */
-void delete(char **p)
+void deletee(char **p)
 {
 	char **s = p;
 
