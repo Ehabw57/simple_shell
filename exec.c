@@ -13,7 +13,7 @@ void _exec(char *path, char *arg[])
     else
     {
         wait(&status);
-        status = status << 8;
+        status = status >> 8;
         return;
     }
 }
