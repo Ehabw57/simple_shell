@@ -17,17 +17,12 @@ int _unsetenv(char **env)
 
 int _hsexit(char **arg)
 {
-    int code;
     if (arg[1] == NULL)
     {
         free(arg);
         return (69);
     }
-    else
-    {
-code = _atoi(arg[1]);
-        exit(code);
-    }
+
     return (0);
 }
 int env(char **env)
